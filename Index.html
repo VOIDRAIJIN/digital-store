@@ -38,3 +38,72 @@
 <script src="script.js"></script>
 </body>
 </html>
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 40px;
+  background: #1c1c1c;
+}
+
+.products {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 40px;
+}
+
+.product {
+  background: #222;
+  padding: 20px;
+  width: 220px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.product button {
+  margin-top: 10px;
+  padding: 10px;
+  background: #00ff9c;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.cart {
+  background: #1c1c1c;
+  padding: 30px;
+  margin: 20px;
+  border-radius: 10px;
+}
+let cart = [];
+let total = 0;
+
+function addToCart(name, price) {
+  cart.push({ name, price });
+  total += price;
+  renderCart();
+}
+
+function renderCart() {
+  const cartItems = document.getElementById("cartItems");
+  cartItems.innerHTML = "";
+
+  cart.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - $${item.price}`;
+    cartItems.appendChild(li);
+  });
+
+  document.getElementById("total").textContent = `Total: $${total}`;
+}
+
+function checkout() {
+  alert("Checkout system coming soon! (Stripe / PayPal ready)");
+}
